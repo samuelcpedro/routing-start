@@ -1,4 +1,4 @@
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
@@ -12,7 +12,8 @@ export class ServerComponent implements OnInit {
   server: { id: number, name: string, status: string };
 
   constructor(private serversService: ServersService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     // get param and cast to number
@@ -25,4 +26,18 @@ export class ServerComponent implements OnInit {
     this.route.params.subscribe((params: Params) => this.server = this.serversService.getServer(+params['id']));
   }
 
+  onEdit() {
+
+    // need to pass an array
+    // this.router.navigate([]);
+
+    // we just want to add edit to the current path
+    // this.router.navigate(['edit']);
+
+    // we coulded add
+    // this.router.navigate(['/servers', this.server.id , 'edit']);
+
+    // we just want to add edit to the current path
+    this.router.navigate(['edit'], { relativeTo: this.route });
+  }
 }
