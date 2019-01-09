@@ -38,6 +38,11 @@ export class ServerComponent implements OnInit {
     // this.router.navigate(['/servers', this.server.id , 'edit']);
 
     // we just want to add edit to the current path
-    this.router.navigate(['edit'], { relativeTo: this.route });
+    // this.router.navigate(['edit'], { relativeTo: this.route });
+
+    // preserve information
+    // preserve if we want to overwrite the new  query params
+    // merge with old query param with new that we might have
+    this.router.navigate(['edit'], { relativeTo: this.route, queryParamsHandling: 'preserve'});
   }
 }
