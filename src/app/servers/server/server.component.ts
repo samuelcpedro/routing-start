@@ -18,12 +18,11 @@ export class ServerComponent implements OnInit {
     // get param and cast to number
     const id = +this.route.snapshot.params['id'];
 
-    // get 
+    // get server info
     this.server = this.serversService.getServer(id);
 
-    this.route.params.subscribe((params: Params) => {
-      this.server = this.serversService.getServer(+params['id']);
-    });
+    // react to changes
+    this.route.params.subscribe((params: Params) => this.server = this.serversService.getServer(+params['id']));
   }
 
 }
