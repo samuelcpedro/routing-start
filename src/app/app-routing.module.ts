@@ -37,6 +37,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [
+        // RouterModule.forRoot(appRoutes, { useHash: true})
         RouterModule.forRoot(appRoutes)
     ],
     exports: [RouterModule] // of this modules that are being import wich of them  should i export
